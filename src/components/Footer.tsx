@@ -7,52 +7,56 @@ export default function Footer() {
   const isLoginExternal = isExternalUrl(loginUrl);
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-          {/* Links */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
-            <Link
-              href={routes.about}
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
+    <footer className="border-t border-border bg-surface">
+      <div className="container-page py-10 sm:py-12">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-10">
+          {/* Left: logo placeholder + tagline */}
+          <div className="max-w-xs">
+            <div className="text-xl font-bold text-foreground mb-2">MAIA</div>
+            <p className="text-sm text-muted leading-relaxed">
+              AI documentation + compliance for EMS.
+            </p>
+          </div>
+
+          {/* Right: links */}
+          <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-muted">
+            <Link href={routes.about} className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
               About
             </Link>
-            <Link
-              href={routes.features}
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
+            <Link href={routes.overview} className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
+              Overview
+            </Link>
+            <Link href={routes.features} className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
               Features
             </Link>
-            <Link
-              href={routes.contact}
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
+            <Link href={routes.contact} className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
               Contact
             </Link>
             {isLoginExternal ? (
               <a
                 href={loginUrl}
                 target="_blank"
-                rel="noreferrer"
-                className="text-gray-600 hover:text-gray-900 transition-colors"
+                rel="noopener noreferrer"
+                className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
               >
                 Login
               </a>
             ) : (
-              <Link
-                href={loginUrl}
-                className="text-gray-600 hover:text-gray-900 transition-colors"
-              >
+              <Link href={loginUrl} className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
                 Login
               </Link>
             )}
+            <Link href="#" className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
+              Privacy Policy
+            </Link>
+            <Link href="#" className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
+              Terms
+            </Link>
           </div>
+        </div>
 
-          {/* Copyright */}
-          <div className="text-sm text-gray-600">
-            © {currentYear} MAIA
-          </div>
+        <div className="mt-8 pt-6 border-t border-border text-sm text-muted">
+          © {currentYear} MAIA
         </div>
       </div>
     </footer>

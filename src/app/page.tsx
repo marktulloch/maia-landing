@@ -1,10 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Hero from "@/components/sections/Hero";
-import TrustStrip from "@/components/sections/TrustStrip";
+import Overview from "@/components/sections/Overview";
 import Features from "@/components/sections/Features";
-import HowItWorks from "@/components/sections/HowItWorks";
-import About from "@/components/sections/About";
 import Security from "@/components/sections/Security";
 import CTA from "@/components/sections/CTA";
 import Contact from "@/components/sections/Contact";
@@ -15,10 +13,8 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         <Hero />
-        <TrustStrip />
+        <Overview />
         <Features />
-        <HowItWorks />
-        <About />
         <Security />
         <CTA />
         <Contact />

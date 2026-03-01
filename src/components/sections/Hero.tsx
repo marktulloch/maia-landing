@@ -4,40 +4,69 @@ import { routes, isExternalUrl } from "@/lib/routes";
 export default function Hero() {
   const demoUrl = routes.demo;
   const isDemoExternal = isExternalUrl(demoUrl);
+  const overviewUrl = routes.overview;
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-          AI Scribe + Compliance for Ambulance Reports
-        </h1>
-        <p className="text-xl sm:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto">
-          Medics dictate a run. MAIA compiles and QA's the report — accurate, compliant, and billable &gt;75% faster.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          {isDemoExternal ? (
-            <a
-              href={demoUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="px-8 py-3 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors font-medium"
-            >
-              Schedule a Demo
-            </a>
-          ) : (
+    <section className="pt-6 md:pt-10 pb-10 md:pb-16 hero-bg-accent relative overflow-hidden">
+      {/* Soft blob shapes behind content */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute top-1/4 -right-20 w-[28rem] h-[28rem] rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute bottom-1/4 -left-20 w-80 h-80 rounded-full bg-primary/5 blur-3xl" />
+      </div>
+
+      <div className="container-page relative">
+        {/* Top: title, subtitle, demo links */}
+        <div className="text-center max-w-[720px] mx-auto">
+          <p className="inline-block px-3 py-1 text-sm font-medium text-primary rounded-full bg-primary/10 border border-primary/20 mb-4">
+            Built for EMS teams
+          </p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-4">
+            The Intelligence Layer for EMS Documentation
+          </h1>
+          <p className="text-lg sm:text-xl lg:text-2xl text-muted mb-6 max-w-xl mx-auto">
+            MAIA converts frontline voice capture into structured reports, automated QA insights, and billing-ready claims — without adding workload to crews.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center sm:items-stretch">
+            {isDemoExternal ? (
+              <a
+                href={demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex justify-center items-center py-2.5 px-6 sm:py-3 sm:px-8 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
+              >
+                Schedule a Demo
+              </a>
+            ) : (
+              <Link
+                href={demoUrl}
+                className="inline-flex justify-center items-center py-2.5 px-6 sm:py-3 sm:px-8 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
+              >
+                Schedule a Demo
+              </Link>
+            )}
             <Link
-              href={demoUrl}
-              className="px-8 py-3 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors font-medium"
+              href={overviewUrl}
+              className="inline-flex justify-center items-center py-2.5 px-6 sm:py-3 sm:px-8 text-sm font-medium rounded-md border border-border text-foreground hover:bg-surface hover:border-primary/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
             >
-              Schedule a Demo
+              Watch Overview
             </Link>
-          )}
-          <Link
-            href={routes.features}
-            className="px-8 py-3 border-2 border-gray-900 text-gray-900 rounded-md hover:bg-gray-50 transition-colors font-medium"
-          >
-            See Features
-          </Link>
+          </div>
+          <p className="mt-4 text-sm text-muted">
+            Built for EMS. Designed for compliance. Powered by AI.
+          </p>
+        </div>
+      </div>
+
+      {/* Bottom: hero image — constrained width (like reference), never scaled beyond natural size */}
+      <div className="container-page relative mt-8 md:mt-10">
+        <div className="flex justify-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/maia_tablet.png"
+            alt="MAIA tablet interface showing run summary and QA"
+            className="w-auto max-w-full rounded-xl shadow-lg object-contain"
+            style={{ maxWidth: "min(100%, 900px)" }}
+          />
         </div>
       </div>
     </section>

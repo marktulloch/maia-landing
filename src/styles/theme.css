@@ -1,7 +1,23 @@
-/* MAIA Theme Variables */
+/* MAIA design tokens – match maia-qa-mvp.web.app */
 :root {
-  --maia-bg: #ffffff;
-  --maia-fg: #1a1a1a;
-  --maia-primary: #2563eb;
-  --maia-muted: #6b7280;
+  --maia-bg: 0 0% 100%;
+  --maia-surface: 220 14% 96%;
+  --maia-fg: 0 0% 9%;
+  --maia-muted: 220 9% 46%;
+  --maia-primary: 178 50% 48%;
+  --maia-primary-foreground: 0 0% 100%;
+  --maia-border: 220 13% 91%;
+  --maia-ring: 178 50% 48%;
+  --container-page: 72rem; /* 1152px, 1120–1200px range */
+}
+
+.dark {
+  --maia-bg: 0 0% 4%;
+  --maia-surface: 0 0% 9%;
+  --maia-fg: 0 0% 93%;
+  --maia-muted: 220 9% 56%;
+  --maia-primary: 178 50% 48%;
+  --maia-primary-foreground: 0 0% 100%;
+  --maia-border: 220 13% 18%;
+  --maia-ring: 178 50% 48%;
 }
