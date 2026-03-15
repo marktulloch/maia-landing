@@ -1,0 +1,41 @@
+[
+  {
+    "id": "seed-1",
+    "title": "Why Documentation Speed Matters in EMS",
+    "slug": "why-documentation-speed-matters-in-ems",
+    "excerpt": "Faster, accurate reports mean less overtime and fewer compliance risks.",
+    "content": "Accurate and timely documentation is critical in emergency medical services. Delays lead to overtime, compliance risks, and billing backlogs. MAIA helps medics complete reports in a fraction of the time while keeping quality high.",
+    "coverImage": "",
+    "status": "published",
+    "publishedAt": "2025-01-15T10:00:00.000Z",
+    "updatedAt": "2025-01-15T10:00:00.000Z",
+    "seoTitle": "Why Documentation Speed Matters in EMS | MAIA",
+    "seoDescription": "Faster, accurate reports mean less overtime and fewer compliance risks."
+  },
+  {
+    "id": "seed-2",
+    "title": "AI and Compliance: What You Need to Know",
+    "slug": "ai-and-compliance-what-you-need-to-know",
+    "excerpt": "How AI-assisted documentation can stay within regulatory guidelines.",
+    "content": "AI tools must support—not replace—clinical judgment. We outline how MAIA is designed to keep your documentation compliant with local and national standards while speeding up the process.",
+    "coverImage": "",
+    "status": "published",
+    "publishedAt": "2025-02-01T10:00:00.000Z",
+    "updatedAt": "2025-02-01T10:00:00.000Z",
+    "seoTitle": "AI and Compliance: What You Need to Know | MAIA",
+    "seoDescription": "How AI-assisted documentation can stay within regulatory guidelines."
+  },
+  {
+    "id": "seed-3",
+    "title": "Draft: Future of EMS Tech",
+    "slug": "draft-future-of-ems-tech",
+    "excerpt": "Draft article—not visible on the public site.",
+    "content": "Coming soon.",
+    "coverImage": "",
+    "status": "draft",
+    "publishedAt": null,
+    "updatedAt": "2025-03-01T10:00:00.000Z",
+    "seoTitle": "",
+    "seoDescription": ""
+  }
+]

@@ -83,4 +83,55 @@
       transparent 50%
     );
   }
+
+  /* Long-form article body: constrained width, readable typography */
+  .article-body {
+    max-width: 65ch;
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: hsl(var(--maia-fg));
+  }
+  .article-body p {
+    margin-bottom: 1.25em;
+  }
+  .article-body p:last-child {
+    margin-bottom: 0;
+  }
+  .article-body a {
+    color: hsl(var(--maia-primary));
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .article-body a:hover {
+    opacity: 0.9;
+  }
+
+  .article-body-html {
+    max-width: 65ch;
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: hsl(var(--maia-fg));
+  }
+  .article-body-html p { margin-bottom: 1.25em; }
+  .article-body-html p:last-child { margin-bottom: 0; }
+  .article-body-html h1, .article-body-html h2, .article-body-html h3 {
+    margin-top: 1.25em; margin-bottom: 0.5em; font-weight: 600; line-height: 1.25;
+  }
+  .article-body-html ul, .article-body-html ol { margin: 0.75em 0 0.75em 1.5em; }
+  .article-body-html blockquote {
+    border-left: 3px solid hsl(var(--maia-border));
+    padding-left: 1em; margin: 1em 0; color: hsl(var(--maia-muted));
+  }
+  .article-body-html img { max-width: 100%; height: auto; border-radius: 0.375rem; }
+  .article-body-html a { color: hsl(var(--maia-primary)); text-decoration: underline; text-underline-offset: 0.2em; }
+
+  /* Admin Tiptap editor body */
+  .admin-editor-body p { margin-bottom: 0.5em; }
+  .admin-editor-body p:last-child { margin-bottom: 0; }
+  .admin-editor-body h1 { font-size: 1.5rem; margin-top: 0.75em; margin-bottom: 0.25em; }
+  .admin-editor-body h2 { font-size: 1.25rem; margin-top: 0.6em; margin-bottom: 0.2em; }
+  .admin-editor-body h3 { font-size: 1.1rem; margin-top: 0.5em; margin-bottom: 0.2em; }
+  .admin-editor-body ul, .admin-editor-body ol { margin: 0.5em 0 0.5em 1.25em; }
+  .admin-editor-body blockquote { border-left: 3px solid hsl(var(--maia-border)); padding-left: 1em; margin: 0.5em 0; color: hsl(var(--maia-muted)); }
+  .admin-editor-body img { max-width: 100%; height: auto; border-radius: 0.375rem; }
 }
