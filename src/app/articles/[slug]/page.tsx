@@ -98,12 +98,12 @@ export default async function ArticlePage({ params }: Props) {
 
             {/* Cover image: optional. Alt text from article.coverImageAlt (SEO and accessibility). */}
             {article.coverImage && (
-              <figure className="max-w-3xl mb-8 rounded-xl overflow-hidden border border-border bg-surface">
+              <figure className="max-w-3xl mb-8 w-full flex justify-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={article.coverImage}
                   alt={article.coverImageAlt?.trim() || ""}
-                  className="w-full aspect-[16/10] object-cover"
+                  className="block max-w-full h-auto mx-auto rounded-xl border border-border bg-surface"
                 />
               </figure>
             )}

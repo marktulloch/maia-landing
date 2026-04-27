@@ -27,6 +27,8 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Client analytics: mount @vercel/analytics <Analytics />, next/script for gtag, or a small client provider
+            that listens for clicks on [data-event] — event names live in @/lib/analytics-events.ts */}
         {children}
       </body>
     </html>

@@ -1,11 +1,8 @@
 import Link from "next/link";
-import { routes, isExternalUrl } from "@/lib/routes";
+import { dataEvent } from "@/lib/analytics-events";
+import { routes } from "@/lib/routes";
 
 export default function Hero() {
-  const demoUrl = routes.demo;
-  const isDemoExternal = isExternalUrl(demoUrl);
-  const overviewUrl = routes.overview;
-
   return (
     <section className="pt-6 md:pt-10 pb-10 md:pb-16 hero-bg-accent relative overflow-hidden">
       {/* Soft blob shapes behind content */}
@@ -15,7 +12,7 @@ export default function Hero() {
       </div>
 
       <div className="container-page relative">
-        {/* Top: title, subtitle, demo links */}
+        {/* Top: title, subtitle, CTAs */}
         <div className="text-center max-w-[720px] mx-auto">
           <p className="inline-block px-3 py-1 text-sm font-medium text-primary rounded-full bg-primary/10 border border-primary/20 mb-4">
             Built for EMS teams
@@ -27,28 +24,12 @@ export default function Hero() {
             MAIA converts frontline voice capture into structured reports, automated QA insights, and billing-ready claims — without adding workload to crews.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center sm:items-stretch">
-            {isDemoExternal ? (
-              <a
-                href={demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex justify-center items-center py-2.5 px-6 sm:py-3 sm:px-8 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
-              >
-                Schedule a Demo
-              </a>
-            ) : (
-              <Link
-                href={demoUrl}
-                className="inline-flex justify-center items-center py-2.5 px-6 sm:py-3 sm:px-8 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
-              >
-                Schedule a Demo
-              </Link>
-            )}
             <Link
-              href={overviewUrl}
-              className="inline-flex justify-center items-center py-2.5 px-6 sm:py-3 sm:px-8 text-sm font-medium rounded-md border border-border text-foreground hover:bg-surface hover:border-primary/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
+              href={routes.bookTrial}
+              data-event={dataEvent.freeTrialCtaClick}
+              className="inline-flex justify-center items-center py-2.5 px-6 sm:py-3 sm:px-8 text-sm font-semibold rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background shadow-sm"
             >
-              Watch Overview
+              Start FREE TRIAL
             </Link>
           </div>
           <p className="mt-4 text-sm text-muted">

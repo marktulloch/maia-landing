@@ -74,7 +74,12 @@ export default async function AdminArticlesPage() {
                     className="border-b border-border last:border-b-0 hover:bg-surface/30 transition-colors"
                   >
                     <td className="px-4 py-3">
-                      <span className="font-medium text-foreground">{article.title}</span>
+                      <Link
+                        href={routes.adminArticleView(article.id)}
+                        className="font-medium text-foreground hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background rounded"
+                      >
+                        {article.title}
+                      </Link>
                     </td>
                     <td className="px-4 py-3 text-muted font-mono text-xs truncate max-w-[12rem]">
                       {article.slug}
@@ -110,7 +115,12 @@ export default async function AdminArticlesPage() {
                 className="p-4 rounded-lg border border-border bg-background flex flex-col gap-3"
               >
                 <div>
-                  <span className="font-medium text-foreground">{article.title}</span>
+                  <Link
+                    href={routes.adminArticleView(article.id)}
+                    className="font-medium text-foreground hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background rounded"
+                  >
+                    {article.title}
+                  </Link>
                   <p className="text-xs text-muted font-mono mt-0.5 truncate">{article.slug}</p>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">

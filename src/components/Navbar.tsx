@@ -2,16 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { routes, isExternalUrl } from "@/lib/routes";
+import TrialNavLink from "@/components/TrialNavLink";
+import { routes, isExternalUrl, homeSectionHref } from "@/lib/routes";
 import { useEffect, useState } from "react";
 
 const SCROLL_THRESHOLD_PX = 16;
 
 const navLinks = [
-  { href: routes.about, label: "About" },
-  { href: routes.overview, label: "Overview" },
-  { href: routes.features, label: "Features" },
-  { href: routes.contact, label: "Contact" },
+  { href: homeSectionHref(routes.about), label: "About" },
+  { href: homeSectionHref(routes.overview), label: "Overview" },
+  { href: homeSectionHref(routes.features), label: "Features" },
+  { href: homeSectionHref(routes.contact), label: "Contact" },
 ] as const;
 
 export default function Navbar() {
@@ -19,17 +20,22 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const loginUrl = routes.login;
-  const demoUrl = routes.demo;
   const isLoginExternal = isExternalUrl(loginUrl);
-  const isDemoExternal = isExternalUrl(demoUrl);
 
   useEffect(() => {
     const onScroll = () => {
       setIsScrolled(window.scrollY > SCROLL_THRESHOLD_PX);
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    // Defer until after the first paint so SSR / first client paint both use isScrolled === false,
+    // then sync to the real scroll position (restoration-safe).
+    const rafId = requestAnimationFrame(() => {
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+    });
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -95,9 +101,12 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Right: Login (desktop) or Hamburger (mobile/tablet) */}
+            {/* Right: Start FREE TRIAL + Login (desktop) or Hamburger (mobile/tablet) */}
             <div className="flex-shrink-0 flex justify-end items-center min-w-[4.5rem] gap-2">
-              <div className="hidden md:block">
+              <div className="hidden md:flex items-center gap-4">
+                <TrialNavLink className={`${linkClassName} text-sm font-medium whitespace-nowrap leading-tight`}>
+                  Start FREE TRIAL
+                </TrialNavLink>
                 {isLoginExternal ? (
                   <a href={loginUrl} target="_blank" rel="noopener noreferrer" className={loginClassName}>
                     Login
@@ -136,7 +145,8 @@ export default function Navbar() {
         className={`fixed inset-0 z-40 md:hidden transition-opacity duration-200 ${
           isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
-        aria-hidden={!isMenuOpen}
+        aria-hidden={isMenuOpen ? undefined : true}
+        inert={isMenuOpen ? undefined : true}
       >
         {/* Backdrop */}
         <button
@@ -193,6 +203,12 @@ export default function Navbar() {
             </ul>
             {/* CTAs at bottom of menu */}
             <div className="mt-8 pt-6 border-t border-border space-y-3">
+              <TrialNavLink
+                className={loginClassName + " w-full block text-center"}
+                onClick={closeMenu}
+              >
+                Start FREE TRIAL
+              </TrialNavLink>
               {isLoginExternal ? (
                 <a
                   href={loginUrl}
@@ -210,25 +226,6 @@ export default function Navbar() {
                   onClick={closeMenu}
                 >
                   Login
-                </Link>
-              )}
-              {isDemoExternal ? (
-                <a
-                  href={demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full block text-center py-3 px-4 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
-                  onClick={closeMenu}
-                >
-                  Schedule a Demo
-                </a>
-              ) : (
-                <Link
-                  href={demoUrl}
-                  className="w-full block text-center py-3 px-4 text-sm font-medium rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
-                  onClick={closeMenu}
-                >
-                  Schedule a Demo
                 </Link>
               )}
             </div>

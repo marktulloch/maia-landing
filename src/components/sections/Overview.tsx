@@ -16,6 +16,7 @@ export default function Overview() {
           <div className="aspect-video rounded-xl border border-border bg-surface overflow-hidden">
             {youtubeDemoVideoId ? (
               <iframe
+                suppressHydrationWarning
                 title="MAIA demo video"
                 src={`https://www.youtube.com/embed/${youtubeDemoVideoId}`}
                 className="w-full h-full"

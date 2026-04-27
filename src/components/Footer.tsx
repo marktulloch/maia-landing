@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { routes, isExternalUrl } from "@/lib/routes";
+import TrialNavLink from "@/components/TrialNavLink";
+import { routes, isExternalUrl, homeSectionHref } from "@/lib/routes";
 import { getLatestPublishedArticles } from "@/lib/articles/store";
 
 const LATEST_ARTICLES_LIMIT = 10;
@@ -27,21 +28,36 @@ export default async function Footer() {
           {/* Right: links + latest articles */}
           <div className="flex flex-col sm:flex-row gap-8 sm:gap-10">
             <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-muted">
-            <Link href={routes.about} className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
+            <Link
+              href={homeSectionHref(routes.about)}
+              className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
+            >
               About
             </Link>
-            <Link href={routes.overview} className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
+            <Link
+              href={homeSectionHref(routes.overview)}
+              className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
+            >
               Overview
             </Link>
-            <Link href={routes.features} className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
+            <Link
+              href={homeSectionHref(routes.features)}
+              className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
+            >
               Features
             </Link>
             <Link href={routes.articles} className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
               Articles
             </Link>
-            <Link href={routes.contact} className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
+            <Link
+              href={homeSectionHref(routes.contact)}
+              className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background"
+            >
               Contact
             </Link>
+            <TrialNavLink className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
+              Start FREE TRIAL
+            </TrialNavLink>
             {isLoginExternal ? (
               <a
                 href={loginUrl}
@@ -59,8 +75,11 @@ export default async function Footer() {
             <Link href="#" className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
               Privacy Policy
             </Link>
-            <Link href="#" className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
+            <Link href={routes.legalTerms} className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
               Terms
+            </Link>
+            <Link href={routes.legalBaa} className="hover:text-foreground transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background">
+              BAA
             </Link>
             </div>
             {latestArticles.length > 0 && (

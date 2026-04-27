@@ -1,4 +1,4 @@
-import { getBaseUrl } from "@/lib/routes";
+import { getBaseUrl, routes } from "@/lib/routes";
 import { getPublishedArticleSlugs } from "@/lib/articles/store";
 
 /**
@@ -21,9 +21,23 @@ export default async function sitemap() {
     priority: 0.7,
   }));
 
+  const staticPages = [
+    { path: routes.bookTrial, changeFrequency: "monthly" as const, priority: 0.9 },
+    { path: routes.freeTrial, changeFrequency: "monthly" as const, priority: 0.85 },
+    { path: routes.onboarding, changeFrequency: "monthly" as const, priority: 0.5 },
+    { path: routes.legalBaa, changeFrequency: "yearly" as const, priority: 0.4 },
+    { path: routes.legalTerms, changeFrequency: "yearly" as const, priority: 0.4 },
+  ].map(({ path, changeFrequency, priority }) => ({
+    url: `${base}${path}`,
+    lastModified: new Date(),
+    changeFrequency,
+    priority,
+  }));
+
   return [
     { url: base, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 1 },
     { url: `${base}/articles`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.9 },
+    ...staticPages,
     ...articleEntries,
   ];
 }
